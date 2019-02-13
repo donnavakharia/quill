@@ -10,11 +10,23 @@ angular.module('reg')
       // Get the current user's most recent data.
       var Settings = settings.data;
 
+      $scope.showTable = false;
+      $scope.createTable = false;
+
+      UserService.getTeamsDetails()
+                 .then(function(teams){
+                  $scope.teams = teams;
+                  $scope.showTable = true;
+                 }, function(err){
+                  $scope.error = err;
+                 });
       $scope.regIsOpen = Utils.isRegOpen(Settings);
 
       $scope.user = currentUser.data;
 
       $scope.TEAM = TEAM;
+
+      
 
       function _populateTeammates() {
         UserService
@@ -52,5 +64,18 @@ angular.module('reg')
             $scope.error = response.data.message;
           });
       };
+
+      $scope.createTeam = function(){
+        $scope.createTable = true;
+        //$scope.showTable = false;
+      }
+
+      $scope.updateSelected = function(user){
+        for(var i = 0 ; i < $scope.teams.length; i++){
+          if($scope.teams[i].teamName !== user.teamName){
+            $scope.teams[i].isSelected = false;
+          }
+        }
+      }
 
     }]);

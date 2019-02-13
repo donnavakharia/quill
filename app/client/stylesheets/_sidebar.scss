@@ -1,7 +1,11 @@
 #sidebar {
   height: 100%;
   position: fixed;
-  background: $sidebar-color;
+  /*background: $sidebar-color;*/
+  /*background: $sidebar-color;*/
+  background: #0f0c29;
+  background: -webkit-linear-gradient(to bottom,#24243e,#302b63);
+  background: linear-gradient(to bottom,#24243e,#302b63);
   color: white;
   width: $sidebar-width;
   z-index: 999;
@@ -19,13 +23,14 @@
     border-left: 0px solid transparent;
 
     &.active {
-      background: lighten($sidebar-color, 4%);
+      /*background: lighten($sidebar-color, 4%);*/
+      background: #5691c8;
       opacity: 1;
       border-left: 8px solid lighten($sidebar-color, 10%);
     }
     &:hover {
       cursor: pointer;
-      background: darken($sidebar-color, 2%);
+      /*background: darken($sidebar-color, 2%);*/
       opacity: 1;
     }
     &:active {
@@ -36,6 +41,11 @@
     &.logo {
       opacity: 1;
       padding: 48px;
+      max-width: 200px;
+        img {
+          width: 180px;
+          height: 200px;
+        }
     }
 
   }
@@ -54,7 +64,8 @@
     position: fixed;
     width: $sidebar-tab-size;
     height: $sidebar-tab-size;
-    background: $sidebar-color;
+    //background: $sidebar-color;
+    background: #24243e;
     top: 12px;
 
     z-index: 9999;
@@ -71,6 +82,7 @@
     .close {
       color: white;
       font-size: 2em;
+
     }
   }
 

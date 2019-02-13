@@ -275,13 +275,13 @@ angular.module('reg')
                 name: 'Name',
                 value: user.profile.name
               },{
-                name: 'Gender',
-                value: user.profile.gender
+                name: 'Shirt',
+                value: user.profile.shirt
               },{
                 name: 'School',
                 value: user.profile.school
               },{
-                name: 'Graduation Year',
+                name: 'Employee Type',
                 value: user.profile.graduationYear
               },{
                 name: 'Description',

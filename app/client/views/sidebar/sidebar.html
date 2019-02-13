@@ -2,7 +2,7 @@
      ng-class="{open: showSidebar}">
   <div ui-sref="app.dashboard"
        class="logo item">
-    <img src="assets/images/logo.svg">
+    <img src="assets/images/hacker.png">
   </div>
 
   <div ui-sref-active="active"
@@ -38,6 +38,13 @@
     </div>
 
     <div
+    ui-sref-active="active"
+    ui-sref="app.faq"
+    class="item">
+    FAQ
+    </div>
+
+    <div
       ui-sref-active="active"
       ui-sref="app.admin.stats"
       class="item"
@@ -60,8 +67,11 @@
 
 <div class="tab"
   ng-click="toggleSidebar()">
-  <img ng-show="!showSidebar" src="assets/images/logo.svg" />
-  <span class="close" ng-show="showSidebar">&#x2715</span>
+  <img ng-show="!showSidebar" src="assets/images/hacker.png" />
+ 
+  <span class="close" ng-show="showSidebar">
+   <img src="assets/images/back.png" />
+  </span>
 </div>
 
 

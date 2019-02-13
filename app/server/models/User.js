@@ -23,32 +23,35 @@ var profile = {
     type: String,
     min: 1,
     max: 150,
+
   },
 
   graduationYear: {
     type: String,
     enum: {
-      values: '2016 2017 2018 2019'.split(' '),
+      values: 'FTE AWF'.split(' '),
+      default: false,
     }
   },
 
   description: {
     type: String,
     min: 0,
-    max: 300
+    max: 300,
   },
 
   essay: {
     type: String,
     min: 0,
-    max: 1500
+    max: 1500,
+    default: false
   },
 
   // Optional info for demographics
-  gender: {
+  shirt: {
     type: String,
     enum : {
-      values: 'M F O N'.split(' ')
+      values: 'S M L XL'.split(' ')
     }
   },
 
@@ -331,10 +334,8 @@ schema.statics.getByToken = function(token, callback){
 schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 &&
-    profile.adult &&
-    profile.school.length > 0 &&
-    ['2016', '2017', '2018', '2019'].indexOf(profile.graduationYear) > -1 &&
-    ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
+    ['FTE', 'AWF'].indexOf(profile.graduationYear) > -1 &&
+    ['S', 'M', 'L', 'XL'].indexOf(profile.shirt) > -1
     ));
 };
 

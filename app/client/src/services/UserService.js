@@ -1,8 +1,8 @@
 angular.module('reg')
   .factory('UserService', [
   '$http',
-  'Session',
-  function($http, Session){
+  'Session', '$q',
+  function($http, Session, $q){
 
     var users = '/api/users';
     var base = users + '/';
@@ -85,6 +85,83 @@ angular.module('reg')
 
       checkOut: function(id){
         return $http.post(base + id + '/checkout');
+      },
+
+      getTeamsDetails: function(){
+        var defer = $q.defer();
+
+        var promise = $http.get('/api/teams/'+Session.getUserId());            
+        $q.when(promise).then(function (response){
+          var teams = [];
+          var data = response.data;
+          for (var i = 0; i < data.length; i++){
+            teams.push({
+                          _id: data[i]._id,
+                          isSelected: false,
+                          teamname: data[i].teamname,
+                        //  ideasummary: data[i].ideasummary,
+                         // ideadescription: data[i].ideadescription,
+                          teammates: data[i].teammates
+                       });
+          }
+          defer.resolve(teams);
+        }, function (err) {
+          defer.reject(err);
+        });
+
+        return defer.promise;
+      },
+
+      createTeam: function(team){
+        var defer = $q.defer();
+        var request = {
+          team: team
+        }
+
+        var promise = $http.post('/api/addteam/'+Session.getUserId(), request, request);
+
+        $q.when(promise).then(function(res){
+          defer.resolve('Successfully created new team');
+        }, function(err){
+          defer.reject(err);
+        });
+        return defer.promise;
+      },
+
+
+      joinTeam: function(selectedTeamId, teammates){
+        var defer = $q.defer();
+        var request = {
+          teamid: selectedTeamId,
+          teammates: teammates
+        }
+
+        var promise = $http.post('/api/updateteam/'+Session.getUserId(), request, request);
+
+        $q.when(promise).then(function(res){
+          defer.resolve('Successfully created new team');
+        }, function(err){
+          defer.reject(err);
+        });
+        return defer.promise;
+      },
+
+      updateTeamDeails: function(selectedTeamId) {//, ideasummary, ideadescription){
+        var defer = $q.defer();
+        var request = {
+          teamid: selectedTeamId//,
+          //ideasummary: ideasummary,
+          //ideadescription: ideadescription
+        }
+
+        var promise = $http.post('/api/updateteamdetails/'+Session.getUserId(), request, request);
+
+        $q.when(promise).then(function(res){
+          defer.resolve('Successfully created new team');
+        }, function(err){
+          defer.reject(err);
+        });
+        return defer.promise;
       },
 
       makeAdmin: function(id){

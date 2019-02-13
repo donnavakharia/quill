@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var validator = require('validator');
 
 /**
  * Settings Schema!
@@ -9,36 +10,8 @@ var mongoose = require('mongoose');
  * @type {mongoose}
  */
 var schema = new mongoose.Schema({
-  status: String,
-  timeOpen: {
-    type: Number,
-    default: 1549952797000
-  },
-  timeClose: {
-    type: Number,
-    default: 1552460400000 // Add a year from now.
-  },
-  timeConfirm: {
-    type: Number,
-    default: 1552460400000 // Date of confirmation
-  },
-  whitelistedEmails: {
-    type: [String],
-    select: false,
-    default: ['paypal.com'],
-  },
-  waitlistText: {
-    type: String
-  },
-  acceptanceText: {
-    type: String,
-  },
-  confirmationText: {
-    type: String
-  },
-  allowMinors: {
-    type: Boolean
-  }
+  teamname: String,
+  teammates: [String]
 });
 
 /**
@@ -78,4 +51,4 @@ schema.statics.getPublicSettings = function(callback){
     .exec(callback);
 };
 
-module.exports = mongoose.model('Settings', schema);
+module.exports = mongoose.model('Teams', schema);

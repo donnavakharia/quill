@@ -89,78 +89,39 @@
                ng-model="selectedUser.profile.name">
       </div>
 
-      <div class="field" ng-show="autoFilledSchool">
-        <label> School </label>
-        <input class="ui input"
-               disabled="disabled"
-               ng-show="autoFilledSchool"
-               ng-model="selectedUser.profile.school">
-      </div>
-
-      <div class="field" ng-show="!autoFilledSchool">
-        <label> School </label>
-        <input class="ui input"
-               name="school"
-               ng-model="selectedUser.profile.school">
-      </div>
+      <div class="field">
+          <label>I would describe myself as a...</label>
+          <input type="text"
+                 placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
+                 ng-model="user.profile.description">
+        </div>
 
       <div class="field">
-        <label>Graduation Year</label>
+        <label>Employee Type</label>
         <select
           name="year"
           ng-model="selectedUser.profile.graduationYear">
-          <option value="">Graduation Year</option>
-          <option value="2016">2016</option>
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
+          <option value="">Employee Type</option>
+            <option value="FTE">FTE(Full Time Employee)</option>
+            <option value="AWF">AWF(Alternate Work Force)</option>
         </select>
       </div>
 
       <div class="field">
-        <label>Gender</label>
+        <label>T-Shirt Size</label>
         <select
-          name="gender"
-          ng-model="selectedUser.profile.gender">
-          <option value="">Gender</option>
-          <option value="M">Male</option>
-          <option value="F">Female</option>
-          <option value="O">Other</option>
-          <option value="N">I prefer not to answer.</option>
+          name="shirt"
+          ng-model="selectedUser.profile.shirt">
+          <option value="">T-Shirt Size</option>
+           
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          
         </select>
       </div>
 
-      <div class="field">
-        <label>I would describe myself as a...</label>
-        <input type="text"
-               placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
-               ng-model="selectedUser.profile.description">
-      </div>
-
-      <div class="field">
-        <label>
-            What would you like to learn or get out of HackMIT? (optional)
-        </label>
-        <textarea ng-model="selectedUser.profile.essay">
-        </textarea>
-      </div>
-
-      <div class="field"
-           ng-hide="isMitStudent">
-        <p>
-          Because of limitations imposed by MIT, we are not legally allowed to host
-          non-MIT minors (those under 18) for HackMIT 2015. Checking the box below affirms that you are or will be 18 years or older by September 19th, 2015.
-        </p>
-        <p>
-          <strong>
-          We will be checking ID. If you are a non-MIT minor, you will be turned away at the door.
-          </strong>
-        </p>
-        <div class="ui checkbox">
-          <input type="checkbox" id="adult" ng-model="selectedUser.profile.adult">
-          <label for="adult">I am 18 or older.</label>
-        </div>
-      </div>
 
       <div class="field">
         <div

@@ -44,6 +44,14 @@ angular.module('reg')
           }
         }
       })
+      .state('faq1',{
+      url: "/faq1",
+      templateUrl: "views/faq/faq1.html",
+      
+      data: {
+        requireLogin: false
+      }
+      })
       .state('app', {
         views: {
           '': {
@@ -120,6 +128,14 @@ angular.module('reg')
             return SettingsService.getPublicSettings();
           }
         }
+      })
+      .state('app.faq',{
+      url: "/faq",
+      templateUrl: "views/faq/faq.html",
+      controller: 'FaqCtrl',
+      data: {
+        requireLogin: true
+      }
       })
       .state('app.admin', {
         views: {

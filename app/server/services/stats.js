@@ -11,11 +11,11 @@ function calculateStats(){
 
     total: 0,
     demo: {
-      gender: {
+      shirt: {
+        S: 0,
         M: 0,
-        F: 0,
-        O: 0,
-        N: 0
+        L: 0,
+        XL: 0
       },
       schools: {},
       year: {
@@ -89,7 +89,7 @@ function calculateStats(){
         var email = user.email.split('@')[1];
 
         // Add to the gender
-        newStats.demo.gender[user.profile.gender] += 1;
+        newStats.demo.shirt[user.profile.shirt] += 1;
 
         // Count verified
         newStats.verified += user.verified ? 1 : 0;
@@ -144,12 +144,12 @@ function calculateStats(){
         }
 
         // Grab the team name if there is one
-        // if (user.teamCode && user.teamCode.length > 0){
-        //   if (!newStats.teams[user.teamCode]){
-        //     newStats.teams[user.teamCode] = [];
-        //   }
-        //   newStats.teams[user.teamCode].push(user.profile.name);
-        // }
+         if (user.teamCode && user.teamCode.length > 0){
+           if (!newStats.teams[user.teamCode]){
+             newStats.teams[user.teamCode] = [];
+           }
+           newStats.teams[user.teamCode].push(user.profile.name);
+         }
 
         // Count shirt sizes
         if (user.confirmation.shirtSize in newStats.shirtSizes){
@@ -209,15 +209,15 @@ function calculateStats(){
         newStats.demo.schools = schools;
 
         // Likewise, transform the teams into an array of objects
-        // var teams = [];
-        // _.keys(newStats.teams)
-        //   .forEach(function(key){
-        //     teams.push({
-        //       name: key,
-        //       users: newStats.teams[key]
-        //     });
-        //   });
-        // newStats.teams = teams;
+         var teams = [];
+         _.keys(newStats.teams)
+           .forEach(function(key){
+             teams.push({
+               name: key,
+               users: newStats.teams[key]
+             });
+           });
+         newStats.teams = teams;
 
         console.log('Stats updated!');
         newStats.lastUpdated = new Date();

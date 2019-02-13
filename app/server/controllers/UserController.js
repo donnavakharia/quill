@@ -397,7 +397,9 @@ UserController.verifyByToken = function(token, callback){
       email: email.toLowerCase()
     },{
       $set: {
-        'verified': true
+        'verified': true,
+        'status.completedProfile': true,
+        'status.confirmed': true
       }
     }, {
       new: true

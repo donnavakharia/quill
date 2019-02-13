@@ -5,24 +5,31 @@
   background: $login-bg; 
   background-size: cover;
 
+  > .containertext {
+    background-color:  transparent; 
+    text-align:left;
+    color: #FFFFFF;
+    }
   > .container {
+    float:left;
     position: relative;
     top: 50%;
+    width: 50%;
 
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 
     > .content {
-      max-width: 320px;
+      max-width: 420px;
       margin: 0 auto;
 
       .logo {
-        max-width: 100px;
+        max-width: 290px;
         margin: .5rem auto 1rem auto;
         img {
-          width: 100px;
-          height: 100px;
+          width: 280px;
+          height: 200px;
         }
       }
 
@@ -38,9 +45,23 @@
 
       .forgot {
         text-align: center;
+        a{
+         color: #ffffff;
+         &:hover{
+           color: #4183c4;
+         }
+        }
       }
 
     }
   }
-
+  .ui.segment{
+   /*background-color: black;*/
+   background: #0f0c29;
+    background: -webkit-linear-gradient(to bottom,#24243e,#302b63);
+    background: linear-gradient(to bottom,#24243e,#302b63);
+  }
+  .ui.form .field>label{
+   color: #ffffff;
+  }
 }
